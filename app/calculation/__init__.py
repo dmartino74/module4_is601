@@ -271,3 +271,16 @@ class RootCalculation(Calculation):
     def execute(self) -> float:
         # Computes the b-th root of a using the Operation module.
         return Operation.root(self.a, self.b)  # pragma: no cover
+    
+@CalculationFactory.register_calculation('module')
+class ModuleCalculation(Calculation):
+    """
+    ModuleCalculation represents a modulo operation.
+
+    This class encapsulates the logic for computing the remainder of a divided by b,
+    allowing modular extension of mathematical operations.
+    """
+
+    def execute(self) -> float:
+        # Computes the remainder of a divided by b using the Operation module.
+        return Operation.module(self.a, self.b)  # pragma: no cover

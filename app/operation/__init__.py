@@ -130,24 +130,48 @@ class Operation:
     @staticmethod
     def root(a: float, b: float) -> float:
        """
-    Computes the b-th root of the first floating-point number and returns the result.
+       Computes the b-th root of the first floating-point number and returns the result.
 
-    **Parameters:**
-    - `a (float)`: The radicand (number under the root).
-    - `b (float)`: The degree of the root.
+      **Parameters:**
+      - `a (float)`: The radicand (number under the root).
+      - `b (float)`: The degree of the root.
 
-    **Returns:**
-    - `float`: The b-th root of `a`, equivalent to `a ** (1 / b)`.
+      **Returns:**
+      - `float`: The b-th root of `a`, equivalent to `a ** (1 / b)`.
 
-    **Example:**
-    >>> Operation.root(27.0, 3.0)
-    3.0
+      **Example:**
+      >>> Operation.root(27.0, 3.0)
+      3.0
 
-    **Design Insight: Why Include Root in Basic Operations?**
-    - Root extraction is the inverse of exponentiation and essential in algebraic, geometric, and statistical computations.
-    - Including it in the `Operation` class ensures symmetry with `power`, supporting both forward and inverse exponential logic.
-    """
+      **Design Insight: Why Include Root in Basic Operations?**
+      - Root extraction is the inverse of exponentiation and essential in algebraic, geometric, and statistical computations.
+      - Including it in the `Operation` class ensures symmetry with `power`, supporting both forward and inverse exponential logic.
+      """
        if b == 0:
          raise ValueError("Cannot compute zeroth root.")
          return a ** (1 / b)  # Computes the b-th root of `a`.
+
+    @staticmethod
+    def module(a: float, b: float) -> float:
+     """
+    Computes the remainder of the division of the first floating-point number by the second.
+
+    **Parameters:**
+    - `a (float)`: The dividend.
+    - `b (float)`: The divisor.
+
+    **Returns:**
+    - `float`: The remainder of `a` divided by `b`.
+
+    **Example:**
+    >>> Operation.module(10.0, 3.0)
+    1.0
+
+    **Design Insight: Why Include Module in Basic Operations?**
+    - Modulo is essential in discrete math, cryptography, and cyclic structures like clocks and calendars.
+    - Including it in the `Operation` class keeps your toolkit versatile and ready for modular logic.
+    """
+     if b == 0:
+        raise ValueError("Cannot perform modulo with divisor zero.")
+        return a % b  # Returns the remainder of `a` divided by `b`.
 
