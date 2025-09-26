@@ -258,3 +258,16 @@ class PowerCalculation(Calculation):
     def execute(self) -> float:
         # Calls the multiplication method from the Operation module to perform the multiplication.
         return Operation.power(self.a, self.b) # pragma: no cover
+    
+@CalculationFactory.register_calculation('root')
+class RootCalculation(Calculation):
+    """
+    RootCalculation represents a root operation.
+
+    This class encapsulates the logic for computing the b-th root of a number a,
+    allowing modular extension of mathematical operations.
+    """
+
+    def execute(self) -> float:
+        # Computes the b-th root of a using the Operation module.
+        return Operation.root(self.a, self.b)  # pragma: no cover

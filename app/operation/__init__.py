@@ -126,3 +126,28 @@ class Operation:
         - Including it in the `Operation` class keeps all core math utilities centralized and consistent.
         """
         return a ** b  # Raises `a` to the power of `b` and returns the result.
+    
+    @staticmethod
+    def root(a: float, b: float) -> float:
+       """
+    Computes the b-th root of the first floating-point number and returns the result.
+
+    **Parameters:**
+    - `a (float)`: The radicand (number under the root).
+    - `b (float)`: The degree of the root.
+
+    **Returns:**
+    - `float`: The b-th root of `a`, equivalent to `a ** (1 / b)`.
+
+    **Example:**
+    >>> Operation.root(27.0, 3.0)
+    3.0
+
+    **Design Insight: Why Include Root in Basic Operations?**
+    - Root extraction is the inverse of exponentiation and essential in algebraic, geometric, and statistical computations.
+    - Including it in the `Operation` class ensures symmetry with `power`, supporting both forward and inverse exponential logic.
+    """
+       if b == 0:
+         raise ValueError("Cannot compute zeroth root.")
+         return a ** (1 / b)  # Computes the b-th root of `a`.
+
