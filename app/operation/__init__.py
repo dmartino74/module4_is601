@@ -3,7 +3,7 @@
 class Operation:
     """
     The Operation class encapsulates basic arithmetic operations as static methods.
-    This design groups related functions (addition, subtraction, multiplication, and division) 
+    This design groups related functions (addition, subtraction, multiplication, division, and power) 
     in a single class, making the code more modular and organized.
 
     **Object-Oriented Programming (OOP) Principles Illustrated:**
@@ -39,10 +39,6 @@ class Operation:
         **Example:**
         >>> Operation.addition(5.0, 3.0)
         8.0
-
-        **Why Use Static Method for Addition?**
-        - Static methods are suitable for functions like addition because they are 
-          independent of any instance-specific data, relying only on the parameters.
         """
         return a + b  # Performs addition of two numbers and returns the result.
     
@@ -61,12 +57,6 @@ class Operation:
         **Example:**
         >>> Operation.subtraction(10.0, 4.0)
         6.0
-
-        **Design Choice: Why Separate Functions for Each Operation?**
-        - By having separate functions, we make each operation clear and isolated, 
-          adhering to the **Single Responsibility Principle (SRP)**. Each function 
-          handles one specific task (addition, subtraction, etc.), making it easier 
-          to test and modify them independently.
         """
         return a - b  # Subtracts the second number from the first and returns the difference.
     
@@ -85,11 +75,6 @@ class Operation:
         **Example:**
         >>> Operation.multiplication(2.0, 3.0)
         6.0
-
-        **Advantages of Static Methods in Utility Classes:**
-        - Static methods in utility classes like this one provide simple access to functions 
-          without requiring an instance of the class. This reduces overhead and makes 
-          the methods easily reusable in other parts of the program.
         """
         return a * b  # Multiplies the two numbers and returns the product.
     
@@ -115,21 +100,29 @@ class Operation:
         Traceback (most recent call last):
             ...
         ValueError: Division by zero is not allowed.
-
-        **Error Handling:**
-        - Division requires extra error handling to prevent division by zero, which 
-          would cause a runtime error. Here, we check if `b` is zero and raise a 
-          `ValueError` with a descriptive message if it is.
-        
-        **Design Insight: Why Raise an Error for Division by Zero?**
-        - Raising an error in this case is a **Defensive Programming** technique, 
-          helping us prevent unexpected results. Instead of letting the program fail 
-          silently or crash, we handle the error gracefully, ensuring that any part of 
-          the program using this function will be alerted to the issue.
         """
         if b == 0:
-            # Checks if the divisor is zero to prevent undefined division.
             raise ValueError("Division by zero is not allowed.")  # Raises an error if division by zero is attempted.
         return a / b  # Divides `a` by `b` and returns the quotient.
 
-    
+    @staticmethod
+    def power(a: float, b: float) -> float:
+        """
+        Raises the first floating-point number to the power of the second and returns the result.
+
+        **Parameters:**
+        - `a (float)`: The base number.
+        - `b (float)`: The exponent.
+        
+        **Returns:**
+        - `float`: The result of `a` raised to the power of `b`.
+
+        **Example:**
+        >>> Operation.power(2.0, 3.0)
+        8.0
+
+        **Design Insight: Why Include Power in Basic Operations?**
+        - Exponentiation is a fundamental arithmetic operation, especially in scientific and financial calculations.
+        - Including it in the `Operation` class keeps all core math utilities centralized and consistent.
+        """
+        return a ** b  # Raises `a` to the power of `b` and returns the result.
